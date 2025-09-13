@@ -7,7 +7,7 @@ body {
     margin: 0;
     
     /* ---- Kode Latar Belakang Gambar ---- */
-    background-image: url('nama_gambar_anda.jpg'); /* GANTI dengan nama file gambar Anda */
+    background-image: url('bg.png'); /* GANTI dengan nama file gambar Anda */
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
