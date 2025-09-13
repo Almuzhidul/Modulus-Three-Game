@@ -5,12 +5,19 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: #f0f0f0;
+    
+    /* ---- Kode Latar Belakang Gambar ---- */
+    background-image: url('nama_gambar_anda.jpg'); /* GANTI dengan nama file gambar Anda */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    /* ---------------------------------- */
 }
 
 .game-container {
     text-align: center;
-    background: #fff;
+    background: rgba(255, 255, 255, 0.85); /* Tambahkan transparansi agar latar belakang terlihat */
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
@@ -53,6 +60,7 @@ body {
 
 .clicked {
     pointer-events: none;
+    cursor: default;
 }
 
 #start-button {
