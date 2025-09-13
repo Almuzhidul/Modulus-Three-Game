@@ -8,20 +8,17 @@ let score = 0;
 let chances = 3;
 let timer = 120; // 2 menit
 let gameInterval;
-let isGameActive = false; // Status game
+let isGameActive = false;
 
 function generateRandomNumber() {
-    return Math.floor(1000 + Math.random() * 9000); // Angka 4 digit dari 1000-9999
+    return Math.floor(1000 + Math.random() * 9000);
 }
 
 function isDivisibleBy3(number) {
-    // Mengecek apakah jumlah digitnya habis dibagi 3
-    // Ini adalah metode yang lebih efisien daripada modulo untuk bilangan besar
     const sumOfDigits = String(number).split('').reduce((sum, digit) => sum + parseInt(digit), 0);
     return sumOfDigits % 3 === 0;
 }
 
-// Fungsi untuk membuat dan mengisi papan permainan
 function createGameBoard() {
     gameBoard.innerHTML = '';
     for (let i = 0; i < 100; i++) {
@@ -31,7 +28,6 @@ function createGameBoard() {
         box.textContent = randomNumber;
 
         box.addEventListener('click', () => {
-            // Abaikan klik jika game belum aktif atau kotak sudah diklik
             if (!isGameActive || box.classList.contains('clicked')) {
                 return;
             }
@@ -54,10 +50,9 @@ function createGameBoard() {
     }
 }
 
-// Fungsi untuk memulai timer dan status game
 function startGame() {
     if (isGameActive) {
-        return; // Mencegah game dimulai dua kali
+        return;
     }
 
     score = 0;
@@ -67,8 +62,8 @@ function startGame() {
     chancesDisplay.textContent = chances;
     startButton.disabled = true;
     isGameActive = true;
-
-    // Reset warna dan klik pada semua kotak
+    
+    // Pastikan semua kotak di-reset saat game dimulai ulang
     document.querySelectorAll('.box').forEach(box => {
         box.classList.remove('correct', 'incorrect', 'clicked');
     });
@@ -91,12 +86,11 @@ function endGame() {
     startButton.disabled = false;
 }
 
-// Panggil fungsi untuk membuat papan saat halaman dimuat
+// Panggil fungsi untuk membuat papan saat halaman dimuat pertama kali
 document.addEventListener('DOMContentLoaded', createGameBoard);
 
-// Tambahkan event listener untuk tombol "Mulai Permainan"
 startButton.addEventListener('click', () => {
-    // Jika game sudah selesai, buat papan baru (reset)
+    // Saat tombol Start diklik, buat papan baru jika game tidak aktif, lalu mulai game
     if (!isGameActive) {
         createGameBoard();
     }
